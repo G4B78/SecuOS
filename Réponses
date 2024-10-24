@@ -1,0 +1,89 @@
+s1 = a and (a or b)
+
+    a = 1, b = 1
+    (a or b) = 1 or 1 = 1
+    a and (a or b) = 1 and 1 = 1
+    Résultat s1 = 1
+
+s2 = (a or b) and ((not a) or b)
+
+    a = 1, b = 1
+    (a or b) = 1 or 1 = 1
+    (not a) or b = 0 or 1 = 1
+    (a or b) and ((not a) or b) = 1 and 1 = 1
+    Résultat s2 = 1
+
+s3 = (a or b) and c or (not a) and (b or c)
+
+    a = 1, b = 1, c = 0
+    a or b = 1 or 1 = 1
+    (a or b) and c = 1 and 0 = 0
+    not a = 0
+    b or c = 1 or 0 = 1
+    (not a) and (b or c) = 0 and 1 = 0
+    (a or b) and c or (not a) and (b or c) = 0 or 0 = 0
+    Résultat s3 = 0
+
+
+
+s4 = (a and b) or c and (not a) or (b and c) and (not b)
+
+    a = 1, b = 1, c = 0
+    a and b = 1 and 1 = 1
+    c and (not a) = 0 and 0 = 0
+    b and c = 1 and 0 = 0
+    (b and c) and (not b) = 0 and 0 = 0
+    (a and b) or c and (not a) or (b and c) and (not b) = 1 or 0 or 0 = 1
+    Résultat s4 = 1
+
+s5 = (a or b or c) and (not a or b or c) or (a and b) or c and d
+
+    a = 1, b = 1, c = 0, d = 0
+    (a or b or c) = 1 or 1 or 0 = 1
+    (not a or b or c) = 0 or 1 or 0 = 1
+    (a or b or c) and (not a or b or c) = 1 and 1 = 1
+    a and b = 1 and 1 = 1
+    c and d = 0 and 0 = 0
+    (a or b or c) and (not a or b or c) or (a and b) or c and d = 1 or 1 or 0 = 1
+    Résultat s5 = 1
+
+s6 = a or b or (not c) and b or (a or not c) or not ((not a) or b or ((not a) and c))
+
+    a = 1, b = 1, c = 0
+    not c = 1
+    (not c) and b = 1 and 1 = 1
+    a or b = 1 or 1 = 1
+    a or not c = 1 or 1 = 1
+    not a = 0
+    (not a) or b = 0 or 1 = 1
+    (not a) and c = 0 and 0 = 0
+    (not a) or b or ((not a) and c) = 1 or 0 = 1
+    not ((not a) or b or ((not a) and c)) = not 1 = 0
+    a or b or (not c) and b or (a or not c) or not ((not a) or b or ((not a) and c)) = 1 or 1 or 0 = 1
+    Résultat s6 = 1
+
+f = not(a and (not b) and (a or b)) or (not a and b) and not (a or (not b) or (not c))
+
+    a = 1, b = 1, c = 0
+    not b = 0
+    a or b = 1
+    a and (not b) = 1 and 0 = 0
+    (not a and b) = 0 and 1 = 0
+    not c = 1
+    a or (not b) or (not c) = 1 or 0 or 1 = 1
+    not (a or (not b) or (not c)) = 0
+    (not a and b) and not (a or (not b) or (not c)) = 0 and 0 = 0
+    not(a and (not b) and (a or b)) = not 0 = 1
+    not(a and (not b) and (a or b)) or (not a and b) and not (a or (not b) or (not c)) = 1 or 0 = 1
+    Résultat f = 1
+
+g = not((c or d) and a and not (c) and d and ((not a) and c or (not d)))
+
+    a = 1, b = 1, c = 0, d = 0
+    c or d = 0 or 0 = 0
+    not a = 0
+    not d = 1
+    (not a) and c = 0 and 0 = 0
+    (not a) and c or (not d) = 0 or 1 = 1
+    not ((c or d) and a and not (c) and d and ((not a) and c or (not d))) = not (0 and 1 and 1 and 0 and 1) = not 0 = 1
+    Résultat g = 1
